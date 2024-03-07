@@ -1,6 +1,6 @@
-<!-- bootswatch.html -->
+<!-- templates/bootswatch.html -->
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}{{ page_title }}{% endblock %}
 
 {% block content %}
@@ -10,4 +10,5 @@
         <p>{{ page_content }}</p>
     </div>
 </div>
+<p><img src="{% static 'images/django-logo.png' %}" alt="Django Logo"></p>
 {% endblock %}
