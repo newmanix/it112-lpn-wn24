@@ -10,7 +10,7 @@
   {% if request.COOKIES.theme %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/{{ request.COOKIES.theme }}/bootstrap.min.css">
   {% else %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/spacelab/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
   {% endif %}  
 </head>
 <body>
@@ -48,12 +48,12 @@
     <footer class="footer bg-dark text-white mt-4">
         <div class="container">
             <p>&copy; 2024 My Website</p>
-        </div>
+         </div>
       <div class="container">
           {% if request.COOKIES.theme %}
-              <span class="text-muted float-right font-italic">The current theme is {{ request.COOKIES.theme|title }}</span>
+              <span class="text-muted float-right font-italic">The current theme is {{ request.COOKIES.theme|title }}. <a href="/theme">Switch Theme</a></span>
           {% else %}
-              <span class="text-muted float-right font-italic">No theme selected</span>
+              <span class="text-muted float-right font-italic">No theme selected. <a href="/theme">Set Theme</a></span>
           {% endif %}
       </div>
     </footer>
