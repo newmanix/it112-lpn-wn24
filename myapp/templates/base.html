@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/{{ request.COOKIES.theme }}/bootstrap.min.css">
   {% else %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
-  {% endif %}  
+  {% endif %}
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -32,6 +32,12 @@
                   <li class="nav-item">
                       <a class="nav-link" href="/class/">Class</a>
                   </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link" id="load-default-data">Load</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/" target="_blank">Admin</a>
+                </li>
               </ul>
           </div>
       </div>
@@ -58,5 +64,27 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- JavaScript for the default data link -->
+    <script>
+        document.getElementById('load-default-data').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Are you sure you want to load default data? This will delete all existing data.')) {
+                fetch('/load/')  // URL to trigger the view for loading default data
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status == 'success') {
+                      alert('Default data successfully loaded!');
+                    } else {
+                      alert('Failed to load default data.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to load default data.');
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>

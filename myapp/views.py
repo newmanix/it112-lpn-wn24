@@ -62,3 +62,27 @@ class ThemeView(BaseView):
       response = HttpResponseRedirect(reverse('theme'))
       response.set_cookie('theme', theme)
       return response
+
+from django.http import JsonResponse
+from .default_data import load_default_data
+
+def load_default_data_view(request):
+    load_default_data()  # Call the load_default_data function
+    return JsonResponse({'status': 'success'})
+
+from django.views.generic import ListView
+from django.urls import reverse_lazy
+from .models import Invention
+
+class InventionListView(ListView):
+    model = Invention
+    template_name = 'invention_list.html'
+    context_object_name = 'inventions'
+
+from django.views.generic import DetailView
+from .models import Invention
+
+class InventionDetailView(DetailView):
+    model = Invention
+    template_name = 'invention_view.html'
+    context_object_name = 'invention'
