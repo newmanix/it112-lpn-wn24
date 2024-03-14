@@ -10,4 +10,13 @@
     <p><strong>Background:</strong> {{ invention.background }}</p>
     <p><strong>Outcome:</strong> {{ invention.outcome }}</p>
 </div>
+<div class="container">
+  <button type="button" class="btn btn-outline-warning" onclick="window.location.href = '{% url 'update_invention' invention.id %}';">Edit Invention</button>
+
+  <!-- Delete Invention Form -->
+  <form style="display:inline-block" id="deleteForm" onsubmit="return confirm('Are you sure you want to delete this Invention?')" action="{% url 'delete_invention' invention.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-outline-danger" value="Delete Invention">
+  </form>
+  </div>
 {% endblock %}
